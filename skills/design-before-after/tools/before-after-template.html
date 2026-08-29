@@ -1,0 +1,61 @@
+<!--
+  ШАБЛОН секції «Було / Стало». Це РЕФЕРЕНС, не готовий віджет.
+  Скопіюй <section> під кожну проблему всередину одного show_widget.
+  Підстав значення замість {{...}}. Коментарі прибери у фінальному коді
+  (рендерер не любить HTML-коментарі — вони ламають стрімінг).
+
+  Один раз на початку віджета встав цей <style>:
+-->
+<style>
+.so{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.scr{background:#fff;border:1px solid #e6e6e6;border-radius:8px;overflow:hidden}
+.cap{display:flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;color:var(--color-text-secondary)}
+.lab{font-size:11px;font-weight:500;margin-bottom:6px;letter-spacing:.3px}
+.sec{margin-bottom:1.9rem}
+.col{min-width:0}
+</style>
+<div class="so"><h2>{{ОДНОРЯДКОВЕ ПОЯСНЕННЯ ДЛЯ ЧИТАЧІВ ЕКРАНА}}</h2></div>
+
+<!-- ── СЕКЦІЯ ОДНІЄЇ ПРОБЛЕМИ ── -->
+<section class="sec">
+  <div style="display:flex;gap:8px;align-items:baseline;margin-bottom:4px">
+    <span style="font-size:12px;font-weight:500;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums">№ {{NN}}</span>
+    <span style="font-size:15px;font-weight:500;color:var(--color-text-primary)">{{TITLE}}</span>
+  </div>
+  <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 12px;line-height:1.6">{{WHY — чому це шкодить гостю}}</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+    <!-- БУЛО -->
+    <div class="col">
+      <div class="lab" style="color:var(--color-text-tertiary)">Було</div>
+      <div class="scr" style="{{ДОДАЙ height:118px;display:flex;align-items:center;justify-content:center;position:relative ДЛЯ tap-target}}">
+        {{РЕАЛЬНИЙ ЗЛАМАНИЙ ЕЛЕМЕНТ — справжній колір/розмір/текст}}
+      </div>
+      <div class="cap"><i class="ti ti-x" style="color:var(--color-text-danger);font-size:15px" aria-hidden="true"></i>{{МЕТРИКА БУЛО}}</div>
+    </div>
+
+    <!-- СТАЛО -->
+    <div class="col">
+      <div class="lab" style="color:var(--color-text-success)">Стало</div>
+      <div class="scr" style="border:2px solid var(--color-border-success){{; + ті ж height/flex для tap-target}}">
+        {{ВИПРАВЛЕНИЙ ЕЛЕМЕНТ}}
+      </div>
+      <div class="cap"><i class="ti ti-check" style="color:var(--color-text-success);font-size:15px" aria-hidden="true"></i>{{МЕТРИКА СТАЛО}}</div>
+    </div>
+
+  </div>
+</section>
+
+<!--
+  ── СПЕЦ-БЛОК «ПАЛЕЦЬ» для type=tap-target ──
+  Клади коло Ø44px ПЕРШИМ всередині .scr (position:relative), кнопку — другою
+  (position:relative, щоб лягла поверх). Якщо кнопка нижча за 44px — коло
+  «вилазить», видно промах. На «Стало» кнопка >=44px ховає коло.
+
+  Було:
+-->
+<div style="position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(226,75,74,.16);border:1px dashed rgba(226,75,74,.6)"></div>
+<button style="position:relative;height:{{28}}px;padding:0 12px;font-size:12px;border:1px solid #cfcfcf;background:#fff;border-radius:6px;color:#333">{{Текст}}</button>
+<!-- Стало (кнопка >=44px, коло зелене): -->
+<div style="position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(29,158,117,.14);border:1px dashed rgba(29,158,117,.6)"></div>
+<button style="position:relative;height:48px;padding:0 18px;font-size:14px;font-weight:500;border:1px solid #1a1a1a;background:#1a1a1a;border-radius:8px;color:#fff">{{Текст}}</button>
