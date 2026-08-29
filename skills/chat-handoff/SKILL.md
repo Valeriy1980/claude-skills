@@ -1,6 +1,11 @@
 ---
 name: chat-handoff
-description: Use when the user asks to summarize the current chat or hand off context to a new chat. Triggers: "підсумуй чат", "підсумуй діалог", "передай контекст", "зроби handoff", "вижимка діалогу", "контекст для нового чату", "handoff", "виженом чат". Generates one copy-paste markdown block giving a fresh Claude session full working context — adaptive to research, project, creative, decision, or mixed chats.
+description: >-
+  Use when the user asks to summarize the current chat or hand off context to a new chat.
+  Triggers: "підсумуй чат", "підсумуй діалог", "передай контекст", "зроби handoff", "вижимка
+  діалогу", "контекст для нового чату", "handoff", "виженом чат". Generates one copy-paste
+  markdown block giving a fresh Claude session full working context — adaptive to research,
+  project, creative, decision, or mixed chats.
 user-invocable: true
 ---
 
